@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cloud Manager</title>
+    <link rel="shortcut icon" href="./assets/title-icon-white.svg" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./css/materialize.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+
+  <body>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper blue-grey lighten-2">
+          <a class="brand-logo"
+            ><i class="logo-icon material-icons">cloud_circle</i>Git Hub</a
+          >
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="https://github.com" target="_blank">Site</a></li>
+            <li>
+              <a href="https://docs.github.com/pt" target="_blank"
+                >Documentação</a
+              >
+            </li>
+            <li>
+              <a href="https://github.com/about" target="_blank">Sobre</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <main>
+      <aside class="menu-lateral blue-grey lighten-5">
+        <div class="collection with-header">
+          <ul>
+            <li class="collection-header center">Menu</li>
+          </ul>
+          <a href="#!" class="collection-item">Usuários</a>
+          <a href="#!" class="collection-item">Repositorios</a>
+          <a href="#!" class="collection-item">Sobre</a>
+        </div>
+      </aside>
+      <div class="conteudo">
+        <div class="header-conteudo">
+          <div class="row">
+            <div class="input-field col s9 m5 l4 xl3">
+              <input
+                placeholder="Usuário do Github"
+                id="input-user"
+                type="text"
+                autofocus
+                required
+              />
+              <label class="active" for="input-user">Usuário</label>
+              <span
+                class="helper-text"
+                data-error="wrong"
+                data-success="right"
+              ></span>
+            </div>
+
+            <button
+              class="btn waves-effect waves-light btn-floating"
+              type="submit"
+              name="pesquisar"
+            >
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </div>
+        <div class="main-content"></div>
+      </div>
+    </main>
+    <footer class="page-footer blue-grey lighten-2">
+      <div class="container hide-on-med-and-down">
+        <div class="row" id="esp-footer">
+          <div class="col l6 s12">
+            <h5 class="white-text">API Git Hub</h5>
+            <p class="grey-text text-lighten-4">
+              Obter dados de usuários/repositorios via API de desenvolvimento.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2020 Guilherme Mulato
+          <a
+            class="grey-text text-lighten-4 right"
+            href="https://api.whatsapp.com/send?l=pt_BR&phone=18997247704&text=Oi, quero conversar sobre o site"
+            target="_blank"
+            >Contato</a
+          >
+        </div>
+      </div>
+    </footer>
+    <script src="../src/materialize.min.js"></script>
+    <script src="../src/app.js"></script>
+    <script src="../src/main.js"></script>
+  </body>
+</html>

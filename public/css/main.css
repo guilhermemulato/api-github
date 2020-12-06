@@ -1,0 +1,145 @@
+nav i.material-icons {
+  display: block;
+  font-size: 50px;
+  height: 56px;
+  line-height: 56px;
+  margin-left: 10px;
+}
+
+.page-footer {
+  font-size: 0.9rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+}
+
+#esp-footer {
+  margin: 0;
+}
+
+div.card {
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  /* width: 250px; */
+  padding: 10px;
+  margin: 5px;
+}
+
+.card .card-stacked {
+  font-size: 1.1rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card .card-action {
+  font-size: 0.7rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card .card-image img {
+  max-width: 200px;
+  border-radius: 6px;
+}
+
+main {
+  display: flex;
+  background-color: #f7f7f7;
+}
+
+.main-content {
+  margin: 0 13px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+main aside.menu-lateral {
+  width: 0%;
+  height: 100vh;
+}
+
+@media only screen and (min-width: 400px) {
+  main aside.menu-lateral {
+    width: 40%;
+  }
+  .main-content {
+    align-items: initial;
+    justify-content: initial;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  nav .brand-logo i {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 540px) {
+  main aside.menu-lateral {
+    width: 30%;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  main aside.menu-lateral {
+    width: 20%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .page-footer {
+    padding-top: 0px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  main aside.menu-lateral {
+    width: 15%;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  main aside.menu-lateral {
+    width: 10%;
+  }
+}
+main div.conteudo {
+  margin: 0 15px;
+  width: 100vw;
+}
+
+.collection {
+  margin: 0;
+  border: none;
+}
+
+.collection .collection-item {
+  background-color: #fff;
+  line-height: 1.5rem;
+  padding: 10px 20px;
+  margin: 1px 8px;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 6px;
+}
+
+.collection.with-header .collection-header {
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px 20px;
+  margin: 0 8px;
+  border-radius: 6px;
+}
+
+.header-conteudo {
+  margin-top: 15px;
+}
+
+button[name="pesquisar"] {
+  margin: 10px 0 0 0;
+}
