@@ -3,10 +3,14 @@ function getUser(user) {
   return fetch(`https://api.github.com/users/${user}`);
 }
 
-//Gerar card
-function gerarCard(nome, url, link) {
-  let mainContent = document.querySelector(".main-content");
+//Buscar repositorios na API e retorna promise
+function getRepo(user) {
+  return fetch(`https://api.github.com/users/${user}/repos`);
+}
 
+//Gerar card usuario perfil
+function gerarCardUser(nome, url, link) {
+  let mainContent = document.querySelector("#test-swipe-1");
   mainContent.innerHTML = "";
 
   let divCard = document.createElement("div");
@@ -43,12 +47,58 @@ function gerarCard(nome, url, link) {
 
   mainContent.appendChild(divCard);
 }
+
+function gerarCardRepo(nome, descricao, link, dataCriacao) {
+  let mainContent = document.querySelector("#tab-repo");
+
+  let divCard = document.createElement("div");
+  divCard.setAttribute("class", "card");
+
+  let divContent = document.createElement("div");
+  divContent.setAttribute("class", "card-content");
+  let spanContent = document.createElement("span");
+  spanContent.setAttribute("class", "card-title");
+  let txtSpan = document.createTextNode(nome);
+  spanContent.appendChild(txtSpan);
+  let pContent = document.createElement("p");
+  let txtP = document.createTextNode(descricao);
+  pContent.appendChild(txtP);
+  divContent.appendChild(spanContent);
+  divContent.appendChild(pContent);
+  divCard.appendChild(divContent);
+
+  let divAction = document.createElement("div");
+  divAction.setAttribute("class", "card-action");
+  let aActionCreate = document.createElement("a");
+  let txtACreate = document.createTextNode(`CRIAÇÃO: ${dataCriacao}`);
+  aActionCreate.appendChild(txtACreate);
+  let aActionLink = document.createElement("a");
+  aActionLink.setAttribute("href", link);
+  aActionLink.setAttribute("target", "_blank");
+  let txtALink = document.createTextNode("Acessar");
+  aActionLink.appendChild(txtALink);
+  divAction.appendChild(aActionCreate);
+  divAction.appendChild(aActionLink);
+  divCard.appendChild(divAction);
+
+  mainContent.appendChild(divCard);
+}
+
 //Tratar retorna da API
 async function pesquisar(user) {
   const userResponse = await getUser(user);
-  const data = await userResponse.json();
+  const repoResponse = await getRepo(user);
+  const dataUser = await userResponse.json();
+  const dataRepo = await repoResponse.json();
 
-  gerarCard(data.name, data.avatar_url, data.html_url);
+  gerarCardUser(dataUser.name, dataUser.avatar_url, dataUser.html_url);
+
+  let mainContent = document.querySelector("#tab-repo");
+  mainContent.innerHTML = "";
+
+  dataRepo.forEach((ele) => {
+    gerarCardRepo(ele.name, ele.description, ele.html_url, ele.created_at);
+  });
 }
 
 //  EVENTOS

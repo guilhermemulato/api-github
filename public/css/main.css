@@ -8,10 +8,10 @@ nav i.material-icons {
 
 .page-footer {
   font-size: 0.9rem;
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
-  width: 100vw;
+  width: 100%;
 }
 
 #esp-footer {
@@ -58,6 +58,31 @@ main {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+
+#tab-repo {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#tab-repo .card {
+  margin-bottom: 10px;
+  flex: 1 1 500px;
+}
+#tab-repo .card:hover {
+  background-color: #90a4ae;
+}
+#tab-repo .card .card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#tab-repo .card .card-action {
+  display: flex;
+  justify-content: space-between;
 }
 
 main aside.menu-lateral {
