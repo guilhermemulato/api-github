@@ -84,10 +84,43 @@ main {
   display: flex;
   justify-content: space-between;
 }
+#tab-adicionais {
+  margin-top: 10px;
+}
+
+#tab-adicionais ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+#tab-adicionais ul li {
+  flex: 1 1 250px;
+}
 
 main aside.menu-lateral {
   width: 0%;
   height: 100vh;
+}
+
+main div.conteudo {
+  margin: 0;
+  width: 100vw;
+}
+
+.tabs .tab a:hover,
+.tabs .tab a.active {
+  background-color: transparent;
+  color: #90a4ae;
+}
+tabs .tab a:focus,
+.tabs .tab a:focus.active {
+  background-color: rgba(230, 200, 202, 0.2);
+}
+
+.tabs .tab a {
+  color: #26a69a;
+}
+.tabs .indicator {
+  background-color: #26a69a;
 }
 
 @media only screen and (min-width: 400px) {
@@ -116,6 +149,9 @@ main aside.menu-lateral {
   main aside.menu-lateral {
     width: 20%;
   }
+  main div.conteudo {
+    margin: 15px;
+  }
 }
 
 @media only screen and (max-width: 992px) {
@@ -133,10 +169,6 @@ main aside.menu-lateral {
   main aside.menu-lateral {
     width: 10%;
   }
-}
-main div.conteudo {
-  margin: 0 15px;
-  width: 100vw;
 }
 
 .collection {

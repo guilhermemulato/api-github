@@ -3,5 +3,5 @@ document.addEventListener("DOMContentLoaded", function () {
   M.Modal.init(elems);
 
   var elems2 = document.querySelectorAll(".tabs");
-  var instance = M.Tabs.init(elems2);
+  M.Tabs.init(elems2);
 });

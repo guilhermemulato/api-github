@@ -84,6 +84,73 @@ function gerarCardRepo(nome, descricao, link, dataCriacao) {
   mainContent.appendChild(divCard);
 }
 
+function gerarTabAdic(
+  login,
+  bio,
+  email,
+  redeSocial,
+  publicacoes,
+  seguidores,
+  dataCriacao,
+  dataUpdate
+) {
+  let mainContent = document.querySelector("#tab-adicionais");
+  mainContent.innerHTML = "";
+
+  let list = document.createElement("ul");
+  list.setAttribute("class", "collection");
+
+  let liLogin = document.createElement("li");
+  liLogin.setAttribute("class", "collection-item");
+  let txtLogin = document.createTextNode(`Login: ${login}`);
+  liLogin.appendChild(txtLogin);
+  list.appendChild(liLogin);
+
+  let liBio = document.createElement("li");
+  liBio.setAttribute("class", "collection-item");
+  let txtBio = document.createTextNode(`Bio: ${bio}`);
+  liBio.appendChild(txtBio);
+  list.appendChild(liBio);
+
+  let liEmail = document.createElement("li");
+  liEmail.setAttribute("class", "collection-item");
+  let txtEmail = document.createTextNode(`Email: ${email}`);
+  liEmail.appendChild(txtEmail);
+  list.appendChild(liEmail);
+
+  let liBlog = document.createElement("li");
+  liBlog.setAttribute("class", "collection-item");
+  let txtBlog = document.createTextNode(`Blog: ${redeSocial}`);
+  liBlog.appendChild(txtBlog);
+  list.appendChild(liBlog);
+
+  let liPublic = document.createElement("li");
+  liPublic.setAttribute("class", "collection-item");
+  let txtPublic = document.createTextNode(`Publicações: ${publicacoes}`);
+  liPublic.appendChild(txtPublic);
+  list.appendChild(liPublic);
+
+  let liSeguidores = document.createElement("li");
+  liSeguidores.setAttribute("class", "collection-item");
+  let txtSeguidores = document.createTextNode(`Seguidores: ${seguidores}`);
+  liSeguidores.appendChild(txtSeguidores);
+  list.appendChild(liSeguidores);
+
+  let liCriacao = document.createElement("li");
+  liCriacao.setAttribute("class", "collection-item");
+  let txtCriacao = document.createTextNode(`Desde de: ${dataCriacao}`);
+  liCriacao.appendChild(txtCriacao);
+  list.appendChild(liCriacao);
+
+  let liUpdate = document.createElement("li");
+  liUpdate.setAttribute("class", "collection-item");
+  let txtUpdate = document.createTextNode(`Ultimo Acesso: ${dataUpdate}`);
+  liUpdate.appendChild(txtUpdate);
+  list.appendChild(liUpdate);
+
+  mainContent.appendChild(list);
+}
+
 //Tratar retorna da API
 async function pesquisar(user) {
   const userResponse = await getUser(user);
@@ -91,14 +158,25 @@ async function pesquisar(user) {
   const dataUser = await userResponse.json();
   const dataRepo = await repoResponse.json();
 
-  gerarCardUser(dataUser.name, dataUser.avatar_url, dataUser.html_url);
-
   let mainContent = document.querySelector("#tab-repo");
   mainContent.innerHTML = "";
+
+  gerarCardUser(dataUser.name, dataUser.avatar_url, dataUser.html_url);
 
   dataRepo.forEach((ele) => {
     gerarCardRepo(ele.name, ele.description, ele.html_url, ele.created_at);
   });
+
+  gerarTabAdic(
+    dataUser.login,
+    dataUser.bio,
+    dataUser.email,
+    dataUser.blog,
+    dataUser.public_repos,
+    dataUser.followers,
+    dataUser.created_at,
+    dataUser.updated_at
+  );
 }
 
 //  EVENTOS
