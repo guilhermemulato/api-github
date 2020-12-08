@@ -29,7 +29,7 @@ function gerarCardUser(nome, url, link) {
   let divContent = document.createElement("div");
   divContent.setAttribute("class", "card-content");
   let p = document.createElement("p");
-  let pNome = document.createTextNode(nome);
+  let pNome = document.createTextNode(nome == null ? "Não Informado" : nome);
   p.appendChild(pNome);
   divContent.appendChild(p);
   divStacked.appendChild(divContent);
@@ -58,10 +58,12 @@ function gerarCardRepo(nome, descricao, link, dataCriacao) {
   divContent.setAttribute("class", "card-content");
   let spanContent = document.createElement("span");
   spanContent.setAttribute("class", "card-title");
-  let txtSpan = document.createTextNode(nome);
+  let txtSpan = document.createTextNode(nome == null ? "Não Informado" : nome);
   spanContent.appendChild(txtSpan);
   let pContent = document.createElement("p");
-  let txtP = document.createTextNode(descricao);
+  let txtP = document.createTextNode(
+    descricao == null ? "Não Informado" : descricao
+  );
   pContent.appendChild(txtP);
   divContent.appendChild(spanContent);
   divContent.appendChild(pContent);
@@ -102,49 +104,67 @@ function gerarTabAdic(
 
   let liLogin = document.createElement("li");
   liLogin.setAttribute("class", "collection-item");
-  let txtLogin = document.createTextNode(`Login: ${login}`);
+  let txtLogin = document.createTextNode(
+    `Login:  ${login == null ? "Não Informado" : login}`
+  );
   liLogin.appendChild(txtLogin);
   list.appendChild(liLogin);
 
   let liBio = document.createElement("li");
   liBio.setAttribute("class", "collection-item");
-  let txtBio = document.createTextNode(`Bio: ${bio}`);
+  let txtBio = document.createTextNode(
+    `Bio:  ${bio == null ? "Não Informado" : bio}`
+  );
   liBio.appendChild(txtBio);
   list.appendChild(liBio);
 
   let liEmail = document.createElement("li");
   liEmail.setAttribute("class", "collection-item");
-  let txtEmail = document.createTextNode(`Email: ${email}`);
+  let txtEmail = document.createTextNode(
+    `Email:  ${email == null ? "Não Informado" : email}`
+  );
   liEmail.appendChild(txtEmail);
   list.appendChild(liEmail);
 
   let liBlog = document.createElement("li");
   liBlog.setAttribute("class", "collection-item");
-  let txtBlog = document.createTextNode(`Blog: ${redeSocial}`);
+  let txtBlog = document.createTextNode(
+    `Blog:  ${
+      redeSocial == null || redeSocial == "" ? "Não Informado" : redeSocial
+    }`
+  );
   liBlog.appendChild(txtBlog);
   list.appendChild(liBlog);
 
   let liPublic = document.createElement("li");
   liPublic.setAttribute("class", "collection-item");
-  let txtPublic = document.createTextNode(`Publicações: ${publicacoes}`);
+  let txtPublic = document.createTextNode(
+    `Publicações:  ${publicacoes == null ? "Não Informado" : publicacoes}`
+  );
   liPublic.appendChild(txtPublic);
   list.appendChild(liPublic);
 
   let liSeguidores = document.createElement("li");
   liSeguidores.setAttribute("class", "collection-item");
-  let txtSeguidores = document.createTextNode(`Seguidores: ${seguidores}`);
+  let txtSeguidores = document.createTextNode(
+    `Seguidores:  ${seguidores == null ? "Não Informado" : seguidores}`
+  );
   liSeguidores.appendChild(txtSeguidores);
   list.appendChild(liSeguidores);
 
   let liCriacao = document.createElement("li");
   liCriacao.setAttribute("class", "collection-item");
-  let txtCriacao = document.createTextNode(`Desde de: ${dataCriacao}`);
+  let txtCriacao = document.createTextNode(
+    `Desde de:  ${dataCriacao == null ? "Não Informado" : dataCriacao}`
+  );
   liCriacao.appendChild(txtCriacao);
   list.appendChild(liCriacao);
 
   let liUpdate = document.createElement("li");
   liUpdate.setAttribute("class", "collection-item");
-  let txtUpdate = document.createTextNode(`Ultimo Acesso: ${dataUpdate}`);
+  let txtUpdate = document.createTextNode(
+    `Ultimo Acesso:  ${dataUpdate == null ? "Não Informado" : dataUpdate}`
+  );
   liUpdate.appendChild(txtUpdate);
   list.appendChild(liUpdate);
 
@@ -154,6 +174,11 @@ function gerarTabAdic(
 //Tratar retorna da API
 async function pesquisar(user) {
   const userResponse = await getUser(user);
+
+  if (userResponse.status == "404") {
+    return;
+  }
+
   const repoResponse = await getRepo(user);
   const dataUser = await userResponse.json();
   const dataRepo = await repoResponse.json();
@@ -184,11 +209,19 @@ async function pesquisar(user) {
 //Evento de clique no pesquisar
 const btn = document.querySelector("button[name=pesquisar]");
 const inputText = document.querySelector("#input-user");
+let primeiraTab = document.querySelector(".tabs li a");
+
+inputText.addEventListener("keypress", function (e) {
+  if (e.keyCode == 13) {
+    btn.onclick();
+  }
+});
 
 btn.onclick = (evento) => {
   if (inputText.value) {
     pesquisar(inputText.value);
     inputText.value = "";
+    primeiraTab.click();
   } else {
     alert("Digite um Usuário!");
   }
