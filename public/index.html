@@ -10,6 +10,7 @@
       rel="stylesheet"
     />
 
+    <link rel="stylesheet" href="./css/sidebar.css" />
     <link rel="stylesheet" href="./css/materialize.min.css" />
     <link rel="stylesheet" href="./css/main.css" />
   </head>
@@ -37,16 +38,49 @@
     </div>
 
     <main>
-      <aside class="menu-lateral blue-grey lighten-5">
-        <div class="collection with-header">
-          <ul>
-            <li class="collection-header center">Menu</li>
-          </ul>
-          <a class="collection-item">Usuários</a>
-          <a class="collection-item">Repositorios</a>
-          <a class="collection-item">Sobre</a>
-        </div>
-      </aside>
+      <ul id="slide-out" class="sidenav">
+        <li>
+          <div class="user-view">
+            <div class="background">
+              <img src="./assets/github-logo.png" />
+            </div>
+            <a href="#user"><img class="circle" src="./assets/gui02.jpg" /></a>
+            <a href="#name"
+              ><span class="white-text name">Guilherme Mulato</span></a
+            >
+            <a href="#email"
+              ><span class="white-text email"
+                >guilherme_mulato@hotmail.com</span
+              ></a
+            >
+          </div>
+        </li>
+        <li>
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/in/guilherme-mulato-6638b1b8/"
+            ><i class="material-icons">fact_check</i>Linkedin</a
+          >
+        </li>
+        <li>
+          <a target="_blank" href="https://www.instagram.com/guilherme_mulato/"
+            ><i class="material-icons">camera_alt</i>Instagram</a
+          >
+        </li>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">Menu</a></li>
+        <li>
+          <a class="waves-effect sidenav-close" href="#!"
+            ><i class="material-icons">close</i>Voltar ao Site</a
+          >
+        </li>
+      </ul>
+      <a
+        href="#"
+        data-target="slide-out"
+        class="sidenav-trigger btn-floating pulse"
+        ><i class="material-icons">menu</i></a
+      >
       <div class="conteudo">
         <div class="header-conteudo">
           <div class="row">
@@ -121,7 +155,6 @@
       </div>
     </footer>
     <script src="../src/materialize.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../src/app.js"></script>
     <script src="../src/main.js"></script>
   </body>

@@ -9,8 +9,8 @@ nav i.material-icons {
 .page-footer {
   font-size: 0.9rem;
   position: relative;
-  left: 0;
   bottom: 0;
+  z-index: 1;
   width: 100%;
 }
 

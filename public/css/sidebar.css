@@ -1,0 +1,15 @@
+.btn-floating {
+  margin: 8px 0 0 5px;
+}
+
+@media (max-width: 2000px) {
+  .w3-sidebar.w3-collapse {
+    display: none;
+  }
+}
+
+@media (min-width: 993px) {
+  .w3-sidebar.w3-collapse {
+    display: none;
+  }
+}
