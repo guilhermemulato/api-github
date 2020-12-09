@@ -1,3 +1,9 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
 nav i.material-icons {
   display: block;
   font-size: 50px;
@@ -8,10 +14,8 @@ nav i.material-icons {
 
 .page-footer {
   font-size: 0.9rem;
-  position: relative;
-  bottom: 0;
-  z-index: 1;
   width: 100%;
+  /* margin-top: 5px; */
 }
 
 #esp-footer {
@@ -49,6 +53,8 @@ div.card {
 main {
   display: flex;
   background-color: #f7f7f7;
+
+  flex: 1 0 auto;
 }
 
 .main-content {
